@@ -73,17 +73,17 @@ def order(request):
 					print str(e)
 					order = Order.objects.get(id=new_object.id)
 					order.delete()
-					message = "There is something wrong.Try again later"
+					message = "There is something wrong.Try again later: 1"
 					return render(request,'app/form.html',{'form':form,'message':message})
 				return HttpResponseRedirect("/orders")
 			except Exception as e:
 				print e
 				order = Order.objects.get(id=new_object.id)
 				order.delete()
-				message = "There is something wrong.Try again later"
+				message = "There is something wrong.Try again later: 2"
 				return render(request,'app/form.html',{'form':form,'message':message})
 		else:
-			message = "There is something wrong with your form.Try again"
+			message = "There is something wrong with your form.Try again: 3"
 			return render(request,'app/form.html',{'form':form})
 	else:
 		form = orderForm() 
